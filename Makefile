@@ -38,8 +38,21 @@ install: $(TARGET)
 uninstall: $(PREFIX)/$(TARGET)
 	rm -f $(PREFIX)/$(TARGET)
 
+.PHONY:
 format:
 	clang-format -i src/{*.h,*.c}
 
+.PHONY:
 valgrind: poof
 	valgrind ./poof
+
+_build-boilerplate:
+	@mkdir build 2>/dev/null || true
+
+.PHONY:
+test-%: _build-boilerplate
+	$(CC) $(CFLAGS) $(LDFLAGS) -o build/$* test/$*.c $(filter-out src/poof.o, $(OBJS) )
+	./build/$*
+
+.PHONY:
+test: test-generator
