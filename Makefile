@@ -37,3 +37,6 @@ install: $(TARGET)
 .PHONY:
 uninstall: $(PREFIX)/$(TARGET)
 	rm -f $(PREFIX)/$(TARGET)
+
+format:
+	clang-format -i src/{*.h,*.c}
