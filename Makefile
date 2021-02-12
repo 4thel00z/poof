@@ -40,3 +40,6 @@ uninstall: $(PREFIX)/$(TARGET)
 
 format:
 	clang-format -i src/{*.h,*.c}
+
+valgrind: poof
+	valgrind ./poof
