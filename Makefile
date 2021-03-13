@@ -1,5 +1,5 @@
 # your c compiler
-CC = gcc
+CC = clang
 
 # where to install
 PREFIX = /usr/local/bin
@@ -7,7 +7,8 @@ PREFIX = /usr/local/bin
 # your project name
 TARGET = poof
 
-CFLAGS = -Ideps -Wall
+CFLAGS = -Ideps -Wall -g3 -fno-inline -fno-omit-frame-pointer -fsanitize=address
+LDFLAGS = -fsanitize=address
 
 # all the source files
 SRC = $(wildcard src/*.c)
