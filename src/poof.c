@@ -34,7 +34,7 @@ main(int argc, char** argv)
   re_t pattern = re_compile("\\d+?[gGmMkKbB]");
 
   const char* hay = cmd.argv[0];
-  
+
   match_idx = re_matchp(pattern, hay, &match_length);
   if (match_idx != -1) {
     return cry_usage(cmd.name);
